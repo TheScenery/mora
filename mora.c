@@ -67,11 +67,11 @@ class Person
 			int n;
 			while(true)
 			{
-				cout << "Çë" << name << "ÊäÈë³öÈ­ÐÅÏ¢£¬1´ú±írock£¬2´ú±íscissor£¬3´ú±ípaper£¬°´»Ø³µ¼üÈ·ÈÏ£¡" << endl; 
+				cout << "请" << name << "输入出拳信息，1代表rock，2代表scissor，3代表paper，按回车键确认！" << endl; 
 				cin >> n;
 				if(n != 1 && n != 2 && n != 3)
 				{
-					cout << "²»ÄÜË£ÀµÅ¶,ÇëÖØÐÂ³öÈ­£¡";
+					cout << "不能耍赖哦,请重新出拳！";
 				}
 				else break; 
 			}
@@ -101,15 +101,15 @@ class GameJudge
 		}
 		void showGameInf()
 		{
-			cout << "×Ü¹²½øÐÐÁË" << totalNum << "³¡±ÈÈü" << endl;
-			cout << "ÆäÖÐ£º" << endl;
+			cout << "总共进行了" << totalNum << "场比赛" << endl;
+			cout << "其中：" << endl;
 			for(int i=0;i<AINum;i++)
 			{
-				cout << i+1 << "ºÅµçÄÔÍæ¼Ò»ñÊ¤" << win[i] << "³¡£»" << "Ê¤ÂÊÎª£º" << win[i]/totalNum << endl; 
+				cout << i+1 << "号电脑玩家获胜" << win[i] << "场；" << "胜率为：" << win[i]/totalNum << endl; 
 			}
 			for(int i=AINum;i<win.size();i++)
 			{
-				cout << i+1-AINum << "ºÅÍæ¼Ò»ñÊ¤" << win[i] << "³¡£»" << "Ê¤ÂÊÎª£º" << win[i]/totalNum << endl; 
+				cout << i+1-AINum << "号玩家获胜" << win[i] << "场；" << "胜率为：" << win[i]/totalNum << endl; 
 			}	
 		}
 		
@@ -117,11 +117,11 @@ class GameJudge
 		{
 			for(int i=0;i<AINum;i++)
 			{
-				cout << i+1 <<"ºÅµçÄÔÍæ¼Ò--" << state(z[i]) << "  ";
+				cout << i+1 <<"号电脑玩家--" << state(z[i]) << "  ";
 			} 
 			for(int i=AINum;i<n;i++)
 			{
-				cout << i+1-AINum <<"ºÅÍæ¼Ò--" << state(z[i]) << "  ";
+				cout << i+1-AINum <<"号玩家--" << state(z[i]) << "  ";
 			} 
 			cout << endl;
 			vector<int> z1,z2,z3;
@@ -143,14 +143,14 @@ class GameJudge
 			
 			if(!z1.empty() && !z2.empty() && z3.empty())
 			{  
-				cout << "»ñÊ¤ÕßÎª£º" << endl; 
+				cout << "获胜者为：" << endl; 
 				
 				for(int i=0;i<AINum;i++) 
 				{
 					if(z[i]==1)
 					{
 						win[i] ++;
-						cout << i+1 << "ºÅµçÄÔÍæ¼Ò "; 
+						cout << i+1 << "号电脑玩家 "; 
 					}
 				}
 				
@@ -159,7 +159,7 @@ class GameJudge
 					if(z[i]==1)
 					{
 						win[i] ++;
-						cout << i+1-AINum << "ºÅÍæ¼Ò "; 
+						cout << i+1-AINum << "号玩家 "; 
 					}
 				}
 				cout << endl;
@@ -169,13 +169,13 @@ class GameJudge
 		
 			if(!z1.empty() && z2.empty() && !z3.empty())
 			{  
-				cout << "»ñÊ¤Íæ¼ÒÎª£º" << endl; 
+				cout << "获胜玩家为：" << endl; 
 				for(int i=0;i<AINum;i++) 
 				{
 					if(z[i]==3)
 					{
 						win[i] ++;
-						cout << i+1 << "ºÅµçÄÔÍæ¼Ò "; 
+						cout << i+1 << "号电脑玩家 "; 
 					}
 				}
 				for(int i=AINum;i<n;i++) 
@@ -183,7 +183,7 @@ class GameJudge
 					if(z[i]==3)
 					{
 						win[i] ++;
-						cout << i+1-AINum << "ºÅÍæ¼Ò "; 
+						cout << i+1-AINum << "号玩家 "; 
 					}
 				}
 				cout << endl;
@@ -193,13 +193,13 @@ class GameJudge
 			
 			if(z1.empty() && !z2.empty() && !z3.empty())
 			{  
-				cout << "»ñÊ¤Íæ¼ÒÎª£º" << endl; 
+				cout << "获胜玩家为：" << endl; 
 				for(int i=0;i<AINum;i++) 
 				{
 					if(z[i]==2)
 					{
 						win[i] ++;
-						cout << i+1 << "ºÅµçÄÔÍæ¼Ò "; 
+						cout << i+1 << "号电脑玩家 "; 
 					}
 				}
 				for(int i=AINum;i<n;i++) 
@@ -207,14 +207,14 @@ class GameJudge
 					if(z[i]==2)
 					{
 						win[i] ++;
-						cout << i+1-AINum << "ºÅÍæ¼Ò "; 
+						cout << i+1-AINum << "号玩家 "; 
 					}
 				}
 				cout << endl;
 				totalNum ++;
 				return 0;
 			}
-			cout << "Æ½¾Ö£¡" << endl;
+			cout << "平局！" << endl;
 			totalNum ++;
 			return 1;
 		}
@@ -225,24 +225,24 @@ int main()
 {
 	cout <<"**********************************************" << endl;
 	cout <<"*                                            *" << endl;
-	cout <<"*             ²ÂÈ­ÓÎÏ·                       *" << endl;
-	cout <<"*             ----Designed by Liu Dingdong   *" << endl;
+	cout <<"*             猜拳游戏                       *" << endl;
+	cout <<"*             ----Designed by Liu Wenbin     *" << endl;
 	cout <<"*                                            *" << endl;
 	cout <<"**********************************************" << endl;
 	srand(time(0));
 	while(true)
 	{
 		cout << endl;
-		cout << "ÇëÑ¡ÔñÒª½øÐÐµÄ²Ù×÷£º" << endl;
-		cout << "1.ÓÎÏ·½éÉÜ" << endl;
-		cout << "2.¿ªÊ¼ÓÎÏ·" << endl;
-		cout << "°´ÆäËû¼üÍË³ö" << endl;
+		cout << "请选择要进行的操作：" << endl;
+		cout << "1.游戏介绍" << endl;
+		cout << "2.开始游戏" << endl;
+		cout << "按其他键退出" << endl;
 		int n;
 		cin >> n;
 		if(n == 1)
 		{
-			cout <<"1.±¾ÓÎÏ·²ÉÓÃµçÄÔ´¿Ëæ»ú³öÈ­²ßÂÔÓë¶àÃûÍæ¼Ò½øÐÐ²ÂÈ­ÓÎÏ·¡£" << endl;
-			cout <<"2.Ñ¡Ôñ¿ªÊ¼ÓÎÏ·£¬Íæ¼Ò±ØÐëÎª×Ô¼ºÃüÃû¡£" << endl;
+			cout <<"1.本游戏采用电脑纯随机出拳策略与多名玩家进行猜拳游戏。" << endl;
+			cout <<"2.选择开始游戏，玩家必须为自己命名。" << endl;
 			continue;
 		}
 		if(n == 2)
@@ -252,7 +252,7 @@ int main()
 			person.clear(); 
 			vector<Computer> AI;
 			AI.clear();
-			cout << "ÇëÊäÈëµçÄÔÍæ¼Ò¸öÊý£º" << endl;
+			cout << "请输入电脑玩家个数：" << endl;
 			int a; 
 			cin >> a;
 			while(a!=0)
@@ -261,14 +261,14 @@ int main()
 				AI.push_back(c);
 				a --;
 			}
-			cout << "ÇëÊäÈëÍæ¼Ò¸öÊý£º" << endl;
+			cout << "请输入玩家个数：" << endl;
 			int q;
 			cin >> q;
 			GameJudge j(AI.size(),q);
 			while(q!=0)
 			{
 				string s;
-				cout << "ÇëÊäÈëÍæ¼ÒÐÕÃû£º" << endl;
+				cout << "请输入玩家姓名：" << endl;
 				cin >> s;
 				Person p(s);
 				person.push_back(p);
